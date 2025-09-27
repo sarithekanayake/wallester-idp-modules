@@ -1,0 +1,9 @@
+variable "unique_name" {}
+variable "vpc_id" {}
+variable "private_subnet_ids" {}
+variable "public_subnet_ids" {}
+variable "eks_name" {}
+variable "eks_version" {}
+variable "desired_size" {}
+variable "max_size" {}
+variable "min_size" {}
