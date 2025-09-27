@@ -1,3 +1,8 @@
+variable "eks_name" {
+  description = "EKS cluster name"
+  type = string
+}
+
 variable "unique_name" {
   description = "Environment/Project name"
   type = string
