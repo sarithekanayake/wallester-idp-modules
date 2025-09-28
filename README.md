@@ -15,6 +15,7 @@ This repository contains reusable Terraform modules for provisioning AWS infrast
 
 - **EC2-HA**: Provisions highly available EC2 instances to host the workload for Task 01.
   - Uses an Auto Scaling Group (ASG) with a Launch Template for high availability.
+  - Provision the EC2 instances in public subnets.
   - Attach two 10 GB Elastic Block Store (EBS) volumes to the EC2 instance.
   - An Amazon Linux 2023 ARM64-based AMI is used, as Graviton instances run on the ARM64 platform.
   - Install Nginx on the EC2 instances.
@@ -23,6 +24,7 @@ This repository contains reusable Terraform modules for provisioning AWS infrast
   - Uses AWS managed instances to run the workloads
   - AWS Graviton instances (t4g.small) are using as it offer a balance of performance and cost-effectiveness
   - Amazon Linux 2023 ARM64 based AMI is used as Graviton instances runs on ARM64 platform
+  - Provision the worker nodes in private subnets.
   - Setup EKS cluster add-ons: kube-proxy, pod-identity, vpc-cni, core-dns, external-dns
   - Installs AWS Loadbalancer Controller. AWS LBC will handle the ALB creation and exposing the application to the outside.
   - Installs Kubernetes Cluster Autoscaler. AWS uses an Auto Scaling Group to manage the worker nodes. 
