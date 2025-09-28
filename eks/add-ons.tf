@@ -5,7 +5,7 @@
 resource "aws_eks_addon" "kube-proxy" {
   cluster_name = aws_eks_cluster.eks.name
   addon_name   = "kube-proxy"
-  addon_version = "v1.33.0-eksbuild.2"
+  addon_version = "v1.33.3-eksbuild.10"
   depends_on = [ aws_eks_node_group.node_group ]
 }
 
@@ -20,7 +20,7 @@ resource "aws_eks_addon" "pod-identity" {
 resource "aws_eks_addon" "core-dns" {
   cluster_name = aws_eks_cluster.eks.name
   addon_name   = "coredns"
-  addon_version = "v1.12.2-eksbuild.4"
+  addon_version = "v1.12.4-eksbuild.1"
 
   depends_on = [ aws_eks_addon.vpc-cni ]
 }
@@ -28,7 +28,7 @@ resource "aws_eks_addon" "core-dns" {
 resource "aws_eks_addon" "metrics-server" {
   cluster_name = aws_eks_cluster.eks.name
   addon_name   = "metrics-server"
-  addon_version = "v0.8.0-eksbuild.1"
+  addon_version = "v0.8.0-eksbuild.2"
 
   depends_on = [ aws_eks_addon.vpc-cni ]
 }
@@ -65,7 +65,7 @@ resource "aws_iam_role_policy_attachment" "vpc_cni" {
 resource "aws_eks_addon" "vpc-cni" {
   cluster_name = var.eks_name
   addon_name   = "vpc-cni"
-  addon_version = "v1.19.6-eksbuild.7"
+  addon_version = "v1.20.2-eksbuild.1"
   pod_identity_association {
     role_arn = aws_iam_role.vpc_cni.arn
     service_account = "aws-node"
@@ -106,7 +106,7 @@ resource "aws_iam_role_policy_attachment" "ex_dns" {
 resource "aws_eks_addon" "external_dns" {
   cluster_name = var.eks_name
   addon_name   = "external-dns"
-  addon_version = "v0.18.0-eksbuild.1"
+  addon_version = "v0.19.0-eksbuild.2"
   pod_identity_association {
     role_arn = aws_iam_role.ex_dns.arn
     service_account = "external-dns"
